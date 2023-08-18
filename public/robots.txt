@@ -3,7 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://tealslog.vercel.app/
+Host: https://tealsblog.vercel.app/
 
 # Sitemaps
-Sitemap: https://tealslog.vercel.app/sitemap.xml
+Sitemap: https://tealsblog.vercel.app/sitemap.xml
+Sitemap: https://tealsblog.vercel.app/sitemap-0.xml

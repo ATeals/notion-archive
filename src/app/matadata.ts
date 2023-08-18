@@ -5,7 +5,7 @@ export const metadata = {
     openGraph: {
         type: "website",
         locale: "ko_KR",
-        url: "https://tealslog.vercel.app/",
+        url: "https://tealsblog.vercel.app/",
         title: "Teal's Log",
         site_name: "Teal's Log",
         images: [

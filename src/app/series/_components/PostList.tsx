@@ -9,9 +9,9 @@ export default async () => {
             {PostList.map((post) => (
                 <Link href={`/posts/${post.id}`}>
                     <div className="m-4 my-8 flex h-[250px] shadow-md">
-                        <div className="w-[30%]">
+                        <div className="w-[30%] mr-4">
                             <img
-                                src={post.coverImg || "https://i.pinimg.com/474x/04/a0/8b/04a08bb6513245c00096257f827a591f.jpg"}
+                                src={post.coverImg || "/images/default.PNG"}
                                 alt=""
                                 className="object-cover w-full h-full"
                             />
