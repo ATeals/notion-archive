@@ -15,13 +15,11 @@ export default async () => {
                         <div className="hover:bg-highlight  px-2 py-1 text-sm font-bold rounded-sm">{series.title}</div>
                         <div className="border-l border-l-2 border-l-[lightgray] my-2 ml-2">
                             {series.posts.map((post) => (
-                                <Link href={`/posts/${post.id}`}>
-                                    <div
-                                        key={post.id}
-                                        className="ml-2 px-2 py-1 hover:bg-highlight text-sm rounded-sm"
-                                    >
-                                        {post.title}
-                                    </div>
+                                <Link
+                                    key={post.id}
+                                    href={`/posts/${post.id}`}
+                                >
+                                    <div className="ml-2 px-2 py-1 hover:bg-highlight text-sm rounded-sm">{post.title}</div>
                                 </Link>
                             ))}
                         </div>
