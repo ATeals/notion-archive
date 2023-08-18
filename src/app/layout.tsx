@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
 import ContentList, { Skeleton as SKContentList } from "./_components/ContentList";
 
+import { Analytics } from "@vercel/analytics/react";
+
 import SocialLink from "@/components/SocialLink";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
@@ -32,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </aside>
                 </main>
                 <Footer />
+                <Analytics />
             </body>
         </html>
     );
