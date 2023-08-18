@@ -1,3 +1,4 @@
+import { RevaildatePost, RevaildateSeries } from "@/components/RevalidateBtn";
 import DarkModeBtn from "./DarkModeBtn";
 
 export default () => {
@@ -6,6 +7,13 @@ export default () => {
             <div>&copy; Ateals</div>
             <div className="md:hidden">
                 <DarkModeBtn />
+            </div>
+
+            <div
+                id="Revaildate"
+                className="flex [&>*]:mx-2"
+            >
+                <RevaildateSeries />
             </div>
 
             <div className="text-[gray]">Powered by vercel</div>

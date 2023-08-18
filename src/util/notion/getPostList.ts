@@ -1,16 +1,29 @@
 import { Client } from "@notionhq/client";
 import { PostInfo } from "./type";
+import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export const getPostList = async (notion: Client) => {
-    const response = await notion.databases.query({
-        database_id: process.env.POST_DB_ID as string,
-        sorts: [
-            {
-                timestamp: "last_edited_time",
-                direction: "descending",
+    const response: QueryDatabaseResponse = await (
+        await fetch(`https://api.notion.com/v1/databases/${process.env.POST_DB_ID}/query`, {
+            method: "POST",
+            headers: {
+                accept: "application/json",
+                "Notion-Version": "2022-06-28",
+                "content-type": "application/json",
+                Authorization: `Bearer ${process.env.NOTION_KEY}`,
             },
-        ],
-    });
+            body: JSON.stringify({
+                page_size: 100,
+                sorts: [
+                    {
+                        timestamp: "last_edited_time",
+                        direction: "descending",
+                    },
+                ],
+            }),
+            next: { revalidate: false, tags: ["series"] },
+        })
+    ).json();
 
     const PostList = response.results.reduce((a: PostInfo[], c) => {
         // @ts-ignore

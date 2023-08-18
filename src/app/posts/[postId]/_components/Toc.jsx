@@ -100,7 +100,7 @@ export default ({ post }) => {
     return (
         <>
             <ul
-                className="shadowBottom w-full p-5 rounded-[10px]"
+                className="shadowBottom w-full p-5 rounded-[10px] h-[screen] overflow-scroll"
                 style={{
                     overflowY: "scroll",
                 }}

@@ -11,19 +11,35 @@ interface CompactPost {
 }
 
 const getSeriesList = async (notion: Client): Promise<Series[]> => {
-    const database_id = "f8db5f795d7241a69b37518bc3322047";
+    const response = await (
+        await fetch(`https://api.notion.com/v1/databases/${process.env.POST_DB_ID}`, {
+            method: "GET",
+            headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
+            next: { revalidate: false, tags: ["series"] },
+        })
+    ).json();
 
-    const response = await notion.databases.retrieve({ database_id });
-
-    const { results } = await notion.databases.query({
-        database_id,
-        sorts: [
-            {
-                timestamp: "last_edited_time",
-                direction: "descending",
+    const { results } = await (
+        await fetch(`https://api.notion.com/v1/databases/${process.env.POST_DB_ID}/query`, {
+            method: "POST",
+            headers: {
+                accept: "application/json",
+                "Notion-Version": "2022-06-28",
+                "content-type": "application/json",
+                Authorization: `Bearer ${process.env.NOTION_KEY}`,
             },
-        ],
-    });
+            body: JSON.stringify({
+                page_size: 100,
+                sorts: [
+                    {
+                        timestamp: "last_edited_time",
+                        direction: "descending",
+                    },
+                ],
+            }),
+            next: { revalidate: false, tags: ["series"] },
+        })
+    ).json();
 
     // @ts-ignore
     const item = response.properties.series.select.options;
