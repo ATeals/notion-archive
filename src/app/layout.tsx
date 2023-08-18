@@ -4,6 +4,7 @@ import ContentList from "./_components/ContentList";
 import SocialLink from "@/components/SocialLink";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import Head from "./_components/Head";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -11,6 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             lang="ko"
             className=""
         >
+            <Head />
             <body className="bg-offWhite dark:bg-darkBg dark:text-darkText">
                 <Header />
                 <main className="flex min-h-screen pt-[70px]">
