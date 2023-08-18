@@ -18,14 +18,14 @@ export default async () => {
                         </div>
 
                         <div className="m-2 overflow-hidden w-[70%] relative">
-                            <span className="text-[gray]">{post.series}</span>
-                            <h1 className="text-2xl font-bold">{post.title}</h1>
-                            <p className=" m-4">{post.description}</p>
+                            <span className="text-sm md:text-md text-[gray]">{post.series}</span>
+                            <h1 className="tex-xl lg:text-2xl font-bold">{post.title}</h1>
+                            <p className=" m-4 text-sm md:text-md">{post.description}</p>
                             <div className="absolute bottom-0 w-full">
                                 <div className="overflow-scroll flex flex-nowarp">
                                     {post.tags.map((tag: any) => (
                                         <span
-                                            className="mx-2 whitespace-nowrap text-[gray]"
+                                            className="mx-2 whitespace-nowrap text-[gray] text-sm md:text-md"
                                             key={tag.id}
                                         >
                                             #{tag.name}
@@ -33,7 +33,7 @@ export default async () => {
                                     ))}
                                 </div>
 
-                                <div className=" mx-2 text-[gray] flex items-center justify-end">
+                                <div className=" mx-2 text-[gray] flex items-center justify-end text-sm md:text-md">
                                     <i className="bi bi-clock mr-1"></i>
                                     {elapsedTime(post.created_at)}
                                 </div>
