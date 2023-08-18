@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import PostList, { Skeleton } from "./_components/PostList";
 
+export const revalidate = 0;
+
 export default async () => {
     return (
         <section className="w-full">
