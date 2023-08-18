@@ -10,9 +10,11 @@ export default () => {
             </div>
 
             <ul className="flex [&>*]:mx-1">
-                <Link href={"/series"}>
-                    <li>Series</li>
-                </Link>
+                <li>
+                    <Link href={"/series"}>
+                        <span>Series</span>
+                    </Link>
+                </li>
             </ul>
         </header>
     );
