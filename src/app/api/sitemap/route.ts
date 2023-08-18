@@ -1,6 +1,16 @@
 import { notionPostList } from "@/util/notion";
 import { NextRequest, NextResponse } from "next/server";
 
+export const config = {
+    api: {
+        externalResolver: true,
+        // 캐싱 비활성화
+        cache: {
+            enabled: false,
+        },
+    },
+};
+
 export async function GET(request: NextRequest, response: NextResponse) {
     const siteUrl = "https://tealsblog.vercel.app/posts/";
 
