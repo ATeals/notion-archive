@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tealslog.vercel.app/
+
+# Sitemaps
+Sitemap: https://tealslog.vercel.app/sitemap.xml
