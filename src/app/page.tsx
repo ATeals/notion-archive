@@ -1,6 +1,6 @@
-import og from "open-graph";
-
 export { metadata } from "./matadata";
+
+export const revalidate = 0;
 
 export default async () => {
     return (
