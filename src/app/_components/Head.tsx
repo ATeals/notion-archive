@@ -21,6 +21,11 @@ export default () => {
                 href="/favicon.ico"
             />
 
+            <meta
+                name="google-site-verification"
+                content="SWzdnKcr1a_u4qCWr_61fw6PxQf4NZkXWHl1aDrwaeg"
+            />
+
             <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
