@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import PostBody, { Skeleton as SkPostBody } from "./_components/PostBody";
 import PostHeader, { Skeleton as SKPostHeader } from "./_components/PostHeader";
+import Giscus from "./_components/Comments";
 
 export { generateMetadata } from "./metadata";
 
@@ -16,6 +17,8 @@ export default ({ params: { postId } }: { params: { postId: string } }) => {
                     fallback={<SkPostBody />}
                     children={<PostBody postId={postId} />}
                 />
+
+                <Giscus />
             </section>
         </>
     );

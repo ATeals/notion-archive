@@ -2,7 +2,7 @@ import { notionSeriesList } from "@/util/notion";
 import Link from "next/link";
 import DarkModeBtn from "./DarkModeBtn";
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export default async () => {
     const seriesArr = await notionSeriesList();

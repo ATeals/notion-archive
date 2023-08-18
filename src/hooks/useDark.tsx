@@ -4,9 +4,6 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export default (): [boolean | undefined, Dispatch<SetStateAction<boolean | undefined>>] => {
     const [isDark, setIsDark] = useState<boolean | undefined>(undefined);
-    const onClick = () => {
-        setIsDark((i) => !i);
-    };
 
     useEffect(() => {
         if (isDark !== undefined) {
