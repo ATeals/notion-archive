@@ -1,21 +1,16 @@
 import { Client } from "@notionhq/client";
-import { PostInfo } from "./type";
+import { PostInfo } from "../type";
+import { RetrievePage } from "../../api/notion";
 
 const getPostInfo = async (notion: Client, id: string): Promise<PostInfo> => {
-    const response = await (
-        await fetch(`https://api.notion.com/v1/pages/${id}`, {
-            method: "GET",
-            headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
-            next: { revalidate: false, tags: [id] },
-        })
-    ).json();
+    const response = await RetrievePage(id);
 
     // @ts-ignore
     const coverImg = response?.cover?.external.url || response?.cover?.file.url || null;
 
     return {
         // @ts-ignore
-        title: response.properties.title.title[0].text.content, //
+        title: response.properties?.title.title[0].text.content, //
         // @ts-ignore
         created_at: response.created_time.slice(0, 10),
         // @ts-ignore

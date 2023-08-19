@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
+import { RetrieveBlockChildren } from "../../api/notion";
 
 const getPostData = async (notion: Client, id: string): Promise<string> => {
     const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -28,27 +29,15 @@ const getPostData = async (notion: Client, id: string): Promise<string> => {
 
     const arr = [];
 
-    const res = await (
-        await fetch(`https://api.notion.com/v1/blocks/${id}/children?page_size=100`, {
-            method: "GET",
-            headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
-            next: { revalidate: false, tags: [id] },
-        })
-    ).json();
+    const res = await RetrieveBlockChildren(id);
 
     arr.push(...res.results);
-    let start_cursor: string = res.next_cursor;
+    let start_cursor = res.next_cursor;
 
     while (start_cursor) {
-        const res = await (
-            await fetch(`https://api.notion.com/v1/blocks/${id}/children?page_size=100&start_cursor=${start_cursor}`, {
-                method: "GET",
-                headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
-                next: { revalidate: false, tags: [id] },
-            })
-        ).json();
+        const res = await RetrieveBlockChildren(id, start_cursor);
 
-        if (res.status >= 400) break;
+        if (start_cursor === res.next_cursor) break;
 
         arr.push(...res.results);
         start_cursor = res.next_cursor;

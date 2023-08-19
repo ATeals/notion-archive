@@ -1,0 +1,33 @@
+import Giscus from "@/app/posts/[postId]/_components/Comments";
+import PostBody, { Skeleton as SKPostBody } from "@/app/posts/[postId]/_components/PostBody";
+import Portal from "@/components/Portal";
+import RevalidatePost from "@/components/RevalidateBtn/RevalidatePost";
+import { Suspense } from "react";
+import ReviewHeader, { Skeleton as SkReviewHeader } from "./ReviewHeader";
+
+export { generateMetadata } from "./metadata";
+
+export default ({ params: { reviewId } }: { params: { reviewId: string } }) => {
+    return (
+        <>
+            <section className="flex flex-col w-full">
+                <Suspense
+                    fallback={<SkReviewHeader />}
+                    children={<ReviewHeader postId={reviewId} />}
+                />
+
+                <Suspense
+                    fallback={<SKPostBody />}
+                    children={<PostBody postId={reviewId} />}
+                />
+
+                <Giscus />
+
+                <Portal
+                    component={<RevalidatePost id={reviewId} />}
+                    elementId="Revaildate"
+                />
+            </section>
+        </>
+    );
+};

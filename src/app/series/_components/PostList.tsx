@@ -7,7 +7,10 @@ export default async () => {
     return (
         <section>
             {PostList.map((post) => (
-                <Link href={`/posts/${post.id}`}>
+                <Link
+                    href={`/posts/${post.id}`}
+                    key={post.id}
+                >
                     <div className="m-4 my-8 flex h-[250px] shadow-md">
                         <div className="w-[30%] mr-4">
                             <img

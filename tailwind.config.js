@@ -7,7 +7,7 @@ module.exports = {
             offWhite: "#F1F5F9",
             highlight: "#c6d6f5",
             deepblue: "#577CF1",
-            lightgray: "f2f2f2",
+            lightgray: "#f2f2f2",
 
             darkText: "#E0E0E0",
 
