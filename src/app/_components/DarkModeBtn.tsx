@@ -1,15 +1,18 @@
 "use client";
 
 import useDark from "@/hooks/useDark";
-import { useEffect } from "react";
+import { useContext } from "react";
+import { DarkContext } from "../../components/DarkModeProvider";
 
 export default () => {
-    const [isDarkMode, setIsDarkMode] = useDark();
+    const { isDark, setIsDark } = useContext(DarkContext);
 
     const modeToggle = () => {
+        // if (!setIsDark) return;
         // @ts-ignore
         document.querySelector("html").classList.toggle("dark");
-        setIsDarkMode((i) => !i);
+
+        setIsDark((i) => !i);
     };
 
     return (
@@ -18,7 +21,7 @@ export default () => {
                 onClick={modeToggle}
                 className=" flex items-center hover:bg-highlight text-sm rounded-lg my-10 p-2 hover:cursor-pointer"
             >
-                {!isDarkMode ? (
+                {!isDark ? (
                     <>
                         <i className="bi bi-brightness-high mr-2"></i>
                         <span>light</span>

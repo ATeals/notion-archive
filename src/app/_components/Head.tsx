@@ -4,12 +4,12 @@ export default () => {
             <script
                 dangerouslySetInnerHTML={{
                     __html: `(() => {
-                const storedDarkMode = localStorage.getItem("darkMode");
+                const storedDarkMode = localStorage.getItem("isDark");
             
                 if (storedDarkMode === null) {
-                    localStorage.setItem("darkMode", false);
+                    localStorage.setItem("isDark", false);
                 } else if (storedDarkMode !== "false" || window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                    localStorage.setItem("darkMode", "true");
+                    localStorage.setItem("isDark", "true");
                     document.querySelector("html").classList.add("dark");
                 }
             })();`,

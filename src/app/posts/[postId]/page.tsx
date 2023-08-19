@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import PostBody, { Skeleton as SkPostBody } from "./_components/PostBody";
+import { PostBody, SKPostBody } from "@/components/Posts";
 import PostHeader, { Skeleton as SKPostHeader } from "./_components/PostHeader";
-import Giscus from "./_components/Comments";
+import Giscus from "../../../components/Posts/Comments";
 import Portal from "@/components/Portal";
 import { RevaildatePost } from "@/components/RevalidateBtn";
 
@@ -23,7 +23,7 @@ export default ({ params: { postId } }: { params: { postId: string } }) => {
                     children={<PostHeader postId={postId} />}
                 />
                 <Suspense
-                    fallback={<SkPostBody />}
+                    fallback={<SKPostBody />}
                     children={<PostBody postId={postId} />}
                 />
 

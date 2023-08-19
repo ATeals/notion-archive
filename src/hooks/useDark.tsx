@@ -9,9 +9,9 @@ export default (): [boolean | undefined, Dispatch<SetStateAction<boolean | undef
         if (isDark !== undefined) {
             const shouldSetDark = isDark ? "true" : "false";
             document.querySelector("html")?.classList.toggle("dark", isDark);
-            localStorage.setItem("darkMode", shouldSetDark);
+            localStorage.setItem("isDark", shouldSetDark);
         } else {
-            const storedDarkMode = localStorage.getItem("darkMode");
+            const storedDarkMode = localStorage.getItem("isDark");
             const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
             setIsDark(storedDarkMode === "true" || (prefersDarkScheme && storedDarkMode !== "false"));

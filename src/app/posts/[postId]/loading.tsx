@@ -1,4 +1,4 @@
-import { Skeleton as SKPostBody } from "./_components/PostBody";
+import { PostBody, SKPostBody } from "@/components/Posts";
 import { Skeleton as SKPostHeader } from "./_components/PostHeader";
 
 export default () => {

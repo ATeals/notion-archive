@@ -1,8 +1,8 @@
 import Portal from "@/components/Portal";
-import Toc from "./Toc";
+import Toc from "../../app/posts/[postId]/_components/Toc";
 import { notionPostData } from "@/util/notion";
 
-import MDXComponent from "./MDXComponent";
+import MDXComponent from "../../app/posts/[postId]/_components/MDXComponent";
 
 export default async ({ postId }: { postId: string }) => {
     const post = await notionPostData(postId);

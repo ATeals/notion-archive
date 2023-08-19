@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { DarkContext } from "@/components/DarkModeProvider";
+import { useContext, useEffect, useRef } from "react";
 
 export default function Giscus() {
     const ref = useRef<HTMLDivElement>(null);
+
+    const { isDark } = useContext(DarkContext);
 
     useEffect(() => {
         if (!ref.current || ref.current.hasChildNodes()) return;
@@ -22,17 +25,25 @@ export default function Giscus() {
         scriptElem.setAttribute("data-reactions-enabled", "1");
         scriptElem.setAttribute("data-emit-metadata", "0");
         scriptElem.setAttribute("data-input-position", "top");
-        scriptElem.setAttribute("data-theme", "light");
+        scriptElem.setAttribute("data-theme", window.localStorage.getItem("isDark") === "true" ? "dark" : "light");
         scriptElem.setAttribute("data-lang", "ko");
         // scriptElem.setAttribute("data-loading", "lazy");
         scriptElem.setAttribute("async", "");
 
         ref.current.appendChild(scriptElem);
-    }, []);
+
+        console.log(window.localStorage.getItem("isDark") === "true" ? "dark" : "light");
+    }, [isDark]);
+
+    useEffect(() => {
+        const theme = isDark ? "dark" : "light";
+        const iframe = document.querySelector<HTMLIFrameElement>("iframe.giscus-frame");
+        iframe?.contentWindow?.postMessage({ giscus: { setConfig: { theme } } }, "https://giscus.app");
+    }, [isDark]);
 
     return (
         <section
-            className=" p-5 my-10 mx-5 shadow-inner shadow-xl bg-[white] rounded-lg"
+            className="m-5 shadow-inner  p-5 rounded-xl"
             ref={ref}
         />
     );

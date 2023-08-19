@@ -1,5 +1,5 @@
-import Giscus from "@/app/posts/[postId]/_components/Comments";
-import PostBody, { Skeleton as SKPostBody } from "@/app/posts/[postId]/_components/PostBody";
+import Giscus from "@/components/Posts/Comments";
+import { PostBody, SKPostBody } from "@/components/Posts";
 import Portal from "@/components/Portal";
 import RevalidatePost from "@/components/RevalidateBtn/RevalidatePost";
 import { Suspense } from "react";

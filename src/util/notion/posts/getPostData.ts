@@ -18,7 +18,7 @@ const getPostData = async (notion: Client, id: string): Promise<string> => {
 
         const text = callout.rich_text.map((i: any) => i.plain_text);
         return `
-        <aside className="shadow-md p-5 my-10 dark:bg-[#1E1E1E] text-[dark] bg-offWhite rounded-lg">
+        <aside className="shadow-md p-5 my-10 dark:bg-[#1E1E1E] text-[black] bg-offWhite rounded-lg">
         <span>${callout?.icon?.emoji || ""}</span>
         ${text.join("\n")}
     </aside>
