@@ -4,6 +4,7 @@ export default ({ id }: { id: string }) => {
     const onClick = async () => {
         const secret = prompt("새로고침 하기 위한 시크릿 키를 입력하세요.", "");
         const { message } = await (await fetch(`/api/revalidate?tag=${id}&secret=${secret}`)).json();
+        location.reload();
         return alert(message);
     };
     return (
