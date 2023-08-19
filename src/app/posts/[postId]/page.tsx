@@ -4,6 +4,7 @@ import PostHeader, { Skeleton as SKPostHeader } from "./_components/PostHeader";
 import Giscus from "../../../components/Posts/Comments";
 import Portal from "@/components/Portal";
 import { RevaildatePost } from "@/components/RevalidateBtn";
+import { useParams } from "next/navigation";
 
 export { generateMetadata } from "./metadata";
 

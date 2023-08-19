@@ -31,8 +31,6 @@ export default function Giscus() {
         scriptElem.setAttribute("async", "");
 
         ref.current.appendChild(scriptElem);
-
-        console.log(window.localStorage.getItem("isDark") === "true" ? "dark" : "light");
     }, [isDark]);
 
     useEffect(() => {
