@@ -3,7 +3,12 @@ import { NotionToMarkdown } from "notion-to-md";
 import { RetrieveBlockChildren } from "../../api/notion";
 
 const getPostData = async (notion: Client, id: string): Promise<string> => {
-    const n2m = new NotionToMarkdown({ notionClient: notion });
+    const n2m = new NotionToMarkdown({
+        notionClient: notion,
+        config: {
+            separateChildPage: true,
+        },
+    });
 
     n2m.setCustomTransformer("bookmark", async (block) => {
         const { bookmark } = block as any;
@@ -17,11 +22,22 @@ const getPostData = async (notion: Client, id: string): Promise<string> => {
         const { callout } = block as any;
 
         const text = callout.rich_text.map((i: any) => i.plain_text);
+
+        let children;
+
+        // @ts-ignore
+        if (block?.has_children) {
+            const x = await n2m.pageToMarkdown(block.id);
+            const { parent } = n2m.toMarkdownString(x);
+            children = parent;
+        }
+
         return `
         <aside className="shadow-md p-5 my-10 dark:bg-[#1E1E1E] text-[black] bg-offWhite rounded-lg">
-        <span>${callout?.icon?.emoji || ""}</span>
-        ${text.join("\n")}
-    </aside>
+        ${callout?.icon?.emoji || ""} ${text.join("\n")}
+        ${children}
+  
+        </aside>
         `; // use default behavior
     });
 

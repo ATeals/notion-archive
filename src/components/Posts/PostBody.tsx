@@ -9,7 +9,7 @@ export default async ({ postId }: { postId: string }) => {
 
     return (
         <section className="flex justify-center">
-            <section className="w-full dark:prose-invert prose prose-md prose-hr:mt-5 p-5 prose-headings:mt-10 prose-blockquote:border-l-deepblue prose-a:no-underline">
+            <section className="w-full dark:prose-invert prose prose-md prose-hr:mt-5 p-5 prose-headings:mt-10 prose-blockquote:border-l-deepblue">
                 <MDXComponent source={post} />
             </section>
             <Portal
