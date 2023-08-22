@@ -20,7 +20,7 @@ n2m.setCustomTransformer("image", async (block) => {
             await fetch(`https://api.notion.com/v1/blocks/${block.id}`, {
                 method: "GET",
                 headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
-                next: { revalidate: 0 },
+                next: { revalidate: 1800 },
             })
         ).json();
 
