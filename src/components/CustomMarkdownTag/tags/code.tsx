@@ -9,11 +9,12 @@ import { oneLight, oneDark } from "react-syntax-highlighter/dist/esm/styles/pris
 
 const code: CodeComponent = ({ node, inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || "");
+    const language = (match && (match[1] === "javascript" ? "jsx" : match[1] === "typescript" ? "tsx" : null)) || "";
 
     const { isDark } = useContext(DarkContext);
     return !inline && match ? (
         <SyntaxHighlighter
-            language={match[1]}
+            language={language}
             PreTag="div"
             {...props}
             style={isDark ? oneDark : oneLight}
