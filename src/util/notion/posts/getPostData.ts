@@ -21,6 +21,7 @@ const getPostData = async (notion: Client, id: string): Promise<string> => {
                 await fetch(`https://api.notion.com/v1/blocks/${block.id}`, {
                     method: "GET",
                     headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
+                    next: { revalidate: 0 },
                 })
             ).json();
 
@@ -84,6 +85,8 @@ const getPostData = async (notion: Client, id: string): Promise<string> => {
 
     const x = await n2m.blocksToMarkdown(arr);
     const { parent } = n2m.toMarkdownString(x);
+
+    console.log(x);
 
     return parent;
 };
