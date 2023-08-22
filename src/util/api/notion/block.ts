@@ -7,8 +7,6 @@ export const RetrieveBlockChildren = async (id: string, start_cursor?: string): 
         url = `https://api.notion.com/v1/blocks/${id}/children?page_size=25&start_cursor=${start_cursor}`;
     }
 
-    console.log(url);
-
     const res = await (
         await fetch(url, {
             method: "GET",

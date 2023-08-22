@@ -28,7 +28,7 @@ n2m.setCustomTransformer("image", async (block) => {
     }
 
     return `<div className="flex flex-col items-center my-10">
-    <img className="m-0" src="${image?.file?.url || image?.external?.url || ""}" alt="image" />
+    <img loading="lazy" className="m-0" src="${image?.file?.url || image?.external?.url || ""}" alt="image" />
     <span className="text-[gray] italic">${image?.caption[0]?.text?.content === undefined ? "" : image?.caption[0]?.text?.content}</span>
     </div>`;
 });

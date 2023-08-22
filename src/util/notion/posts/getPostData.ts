@@ -23,8 +23,6 @@ const getPostData = async (notion: Client, id: string): Promise<string> => {
     const x = await n2m.blocksToMarkdown(arr);
     const { parent } = n2m.toMarkdownString(x);
 
-    console.log(x);
-
     return parent;
 };
 
