@@ -1,9 +1,11 @@
 import Giscus from "@/components/Posts/Comments";
-import { PostBody, SKPostBody } from "@/components/Posts";
+import { PostBody } from "@/components/Posts";
 import Portal from "@/components/Portal";
-import RevalidatePost from "@/components/RevalidateBtn/RevalidatePost";
+
 import { Suspense } from "react";
-import ReviewHeader, { Skeleton as SkReviewHeader } from "./ReviewHeader";
+import ReviewHeader, { Skeleton as SkReviewHeader } from "./_components/ReviewHeader";
+import PortalReviewList from "../_components/PortalReviewList";
+import ReviewToc from "./_components/ReviewToc";
 
 export { generateMetadata } from "./metadata";
 
@@ -21,9 +23,11 @@ export default ({ params: { reviewId } }: { params: { reviewId: string } }) => {
                 <Giscus />
 
                 <Portal
-                    component={<RevalidatePost id={reviewId} />}
-                    elementId="Revaildate"
+                    component={<ReviewToc reviewId={reviewId} />}
+                    elementId="Toc"
                 />
+
+                <PortalReviewList />
             </section>
         </>
     );

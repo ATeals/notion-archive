@@ -6,6 +6,7 @@ import getPostInfo from "./posts/getPostInfo";
 import { getPostList } from "./posts/getPostList";
 import { getReviews } from "./review/getReviews";
 import getReviewInfo from "./review/getReviewInfo";
+import getReviewList from "./review/getReviewList";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 
@@ -16,5 +17,14 @@ const notionPostList = () => getPostList(notion);
 
 const notionReviews = () => getReviews(notion);
 const notionReviewInfo = (id: string) => getReviewInfo(notion, id);
+const notionReviewList = () => getReviewList(notion);
 
-export { notionSeriesList, notionPostData, notionPostInfo, notionPostList, notionReviews, notionReviewInfo };
+export {
+    notionSeriesList, //
+    notionPostData,
+    notionPostInfo,
+    notionPostList,
+    notionReviews,
+    notionReviewInfo,
+    notionReviewList,
+};

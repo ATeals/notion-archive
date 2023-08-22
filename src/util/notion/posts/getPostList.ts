@@ -4,7 +4,7 @@ import { QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints"
 import { QueryDatabase } from "../../api/notion";
 
 export const getPostList = async (notion: Client) => {
-    const response = await QueryDatabase(process.env.POST_DB_ID as string);
+    const response = await QueryDatabase(process.env.POST_DB_ID as string, ["series"]);
 
     const PostList = response.results.reduce((a: PostInfo[], c) => {
         // @ts-ignore

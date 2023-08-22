@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import ReviewList, { Skeleton } from "./_components/ReviewList";
+import PortalReviewList from "./_components/PortalReviewList";
 
-const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export default () => {
     return (
@@ -10,6 +11,8 @@ export default () => {
                 fallback={<Skeleton />}
                 children={<ReviewList />}
             />
+
+            <PortalReviewList />
         </section>
     );
 };

@@ -3,7 +3,7 @@ import { Client } from "@notionhq/client";
 import { Review } from "../type";
 
 export const getReviews = async (notion: Client) => {
-    const response = await QueryDatabase(process.env.REVIEW_DB_ID as string);
+    const response = await QueryDatabase(process.env.REVIEW_DB_ID as string, ["reviews"]);
 
     const PostList = response.results.reduce((a: Review[], c) => {
         // @ts-ignore

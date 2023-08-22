@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import ContentList, { Skeleton as SKContentList } from "./_components/ContentList";
+import ContentList, { Skeleton as SKContentList } from "../components/ContentList/ContentList";
 
 import { Analytics } from "@vercel/analytics/react";
 
@@ -9,6 +9,7 @@ import Footer from "./_components/Footer";
 import Head from "./_components/Head";
 import { Suspense } from "react";
 import DarkModeProvider from "../components/DarkModeProvider";
+import SideNav from "./_components/SideNav";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -21,18 +22,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <DarkModeProvider>
                     <Header />
                     <main className="flex min-h-screen pt-[70px]">
-                        <aside className="w-[20%] hidden md:block p-5 pl-10 text-[gray]">
-                            <Suspense
-                                fallback={<SKContentList />}
-                                children={<ContentList />}
-                            />
+                        <aside
+                            id="contentList"
+                            className="w-[20%] hidden md:block p-5 pl-10 text-[gray]"
+                        >
+                            <SideNav />
                         </aside>
                         <section className="w-full md:w-[80%] xl:w-[60%] flex justify-center shadow-xl bg-[white] dark:bg-darkBox rounded-xl md:mx-5 xl:mx-2">{children}</section>
-                        <aside
-                            id="Toc"
-                            className="w-[20%] hidden xl:block p-5 text-[gray]"
-                        >
+                        <aside className="w-[20%] hidden xl:block p-5 text-[gray]">
                             <SocialLink />
+                            <div
+                                id="Toc"
+                                className="sticky top-20"
+                            ></div>
                         </aside>
                     </main>
                     <Footer />

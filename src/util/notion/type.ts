@@ -25,3 +25,14 @@ export interface Review {
     genre: tag[];
     id: string;
 }
+
+export interface CompactPost {
+    title: string;
+    id: string;
+}
+
+export interface AsideListObject {
+    title: string;
+    id: string;
+    posts: Array<CompactPost>;
+}

@@ -1,6 +1,6 @@
 import { SKPostBody } from "@/components/Posts";
 
-import { Skeleton as SkReviewHeader } from "./ReviewHeader";
+import { Skeleton as SkReviewHeader } from "./_components/ReviewHeader";
 
 export default () => {
     return (

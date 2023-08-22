@@ -1,10 +1,11 @@
 import { Suspense } from "react";
-import { PostBody, SKPostBody } from "@/components/Posts";
+import { PostBody } from "@/components/Posts";
 import PostHeader, { Skeleton as SKPostHeader } from "./_components/PostHeader";
 import Giscus from "../../../components/Posts/Comments";
 import Portal from "@/components/Portal";
 import { RevaildatePost } from "@/components/RevalidateBtn";
-import { useParams } from "next/navigation";
+import PortalSeriesList from "../_components/PortalSeriesList";
+import SeriesToc from "./_components/SeriesToc";
 
 export { generateMetadata } from "./metadata";
 
@@ -32,6 +33,13 @@ export default ({ params: { postId } }: { params: { postId: string } }) => {
                     component={<RevaildatePost id={postId} />}
                     elementId="Revaildate"
                 />
+
+                <Portal
+                    component={<SeriesToc seriesId={postId} />}
+                    elementId="Toc"
+                />
+
+                <PortalSeriesList />
             </section>
         </>
     );

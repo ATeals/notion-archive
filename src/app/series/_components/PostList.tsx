@@ -8,7 +8,7 @@ export default async () => {
         <section>
             {PostList.map((post) => (
                 <Link
-                    href={`/posts/${post.id}`}
+                    href={`/series/${post.id}`}
                     key={post.id}
                 >
                     <div className="m-4 my-8 flex h-[250px] shadow-md">
@@ -53,7 +53,10 @@ export const Skeleton = () => {
     return (
         <section>
             {[1, 2, 3, 4, 5, 6].map((post) => (
-                <div className="m-4 my-8 flex h-[250px] shadow-md">
+                <div
+                    key={post}
+                    className="m-4 my-8 flex h-[250px] shadow-md"
+                >
                     <div className="w-[30%] bg-[lightgray] animate-pulse"></div>
 
                     <div className="m-2 overflow-hidden w-[70%] relative">

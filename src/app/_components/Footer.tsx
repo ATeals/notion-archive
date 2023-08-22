@@ -12,9 +12,7 @@ export default () => {
             <div
                 id="Revaildate"
                 className="flex [&>*]:mx-2"
-            >
-                <RevaildateSeries />
-            </div>
+            ></div>
 
             <div className="text-[gray]">Powered by vercel</div>
         </footer>
