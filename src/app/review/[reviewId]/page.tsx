@@ -16,10 +16,7 @@ export default ({ params: { reviewId } }: { params: { reviewId: string } }) => {
                     children={<ReviewHeader postId={reviewId} />}
                 />
 
-                <Suspense
-                    fallback={<SKPostBody />}
-                    children={<PostBody postId={reviewId} />}
-                />
+                <PostBody postId={reviewId} />
 
                 <Giscus />
 
