@@ -46,7 +46,7 @@ n2m.setCustomTransformer("callout", async (block) => {
 
     const text = callout.rich_text.map((i: any) => i.plain_text);
 
-    let children;
+    let children = null;
 
     // @ts-ignore
     if (block?.has_children) {
@@ -58,7 +58,7 @@ n2m.setCustomTransformer("callout", async (block) => {
     return `
     <aside className="shadow-md p-5 my-10 dark:bg-[#1E1E1E] text-[black] bg-offWhite rounded-lg">
     ${callout?.icon?.emoji || ""} ${text.join("\n")}
-    ${children}
+    ${children !== null ? children : ""}
 
     </aside>
     `; // use default behavior
