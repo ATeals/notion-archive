@@ -24,7 +24,7 @@ export default ({ params: { reviewId } }: { params: { reviewId: string } }) => {
                 <Giscus />
 
                 <Portal
-                    component={<ReviewToc reviewId={reviewId} />}
+                    component={<Suspense children={<ReviewToc reviewId={reviewId} />} />}
                     elementId="Toc"
                 />
 

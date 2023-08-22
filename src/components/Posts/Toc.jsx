@@ -99,13 +99,13 @@ export default ({ post }) => {
 
     return (
         <>
+            <div className="p-5">Toc</div>
             <ul
-                className="shadowBottom w-full p-5 rounded-[10px] h-[screen] overflow-scroll"
+                className="shadowBottom w-full p-5 rounded-[10px] h-[600px] pb-[50px] overflow-scroll"
                 style={{
                     overflowY: "scroll",
                 }}
             >
-                <div>Toc</div>
                 {result.map((item, index) => {
                     return (
                         <li

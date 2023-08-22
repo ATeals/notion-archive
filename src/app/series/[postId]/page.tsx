@@ -35,7 +35,7 @@ export default ({ params: { postId } }: { params: { postId: string } }) => {
                 />
 
                 <Portal
-                    component={<SeriesToc seriesId={postId} />}
+                    component={<Suspense children={<SeriesToc seriesId={postId} />} />}
                     elementId="Toc"
                 />
 
