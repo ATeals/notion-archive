@@ -1,7 +1,4 @@
-import { notionReviewList, notionSeriesList } from "@/util/notion";
-import Link from "next/link";
-import DarkModeBtn from "../../app/_components/DarkModeBtn";
-import { AsideListObject, CompactPost } from "@/util/notion/type";
+import { AsideListObject } from "@/util/notion/type";
 import ClientList from "./ClientList";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +18,6 @@ export default async ({ dataFunction }: { dataFunction: () => Promise<AsideListO
                     </div>
                 ))}
             </section>
-            <DarkModeBtn />
         </>
     );
 };
