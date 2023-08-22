@@ -1,25 +1,18 @@
-import Portal from "@/components/Portal";
-import Toc from "../../app/posts/[postId]/_components/Toc";
-import { notionPostData } from "@/util/notion";
+import { Suspense } from "react";
+import LoopMDX from "../Mdx/LoopMDX";
+import MDXComponent from "../Mdx/MDXComponent";
 
-import MDXComponent from "../../app/posts/[postId]/_components/MDXComponent";
-
-export default async ({ postId }: { postId: string }) => {
-    const post = await notionPostData(postId);
+export default ({ postId }: { postId: string }) => {
+    // const post = await notionPostData(postId);
 
     return (
         <section className="flex justify-center">
             <section className="w-full dark:prose-invert prose prose-md prose-hr:mt-5 p-5 prose-headings:mt-10 prose-blockquote:border-l-deepblue">
-                <MDXComponent source={post} />
+                <Suspense
+                    fallback={<Skeleton />}
+                    children={<LoopMDX postId={postId} />}
+                />
             </section>
-            <Portal
-                component={
-                    <div className="sticky top-20">
-                        <Toc post={post} />
-                    </div>
-                }
-                elementId="Toc"
-            />
         </section>
     );
 };

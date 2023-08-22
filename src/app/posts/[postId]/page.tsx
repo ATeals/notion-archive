@@ -23,10 +23,8 @@ export default ({ params: { postId } }: { params: { postId: string } }) => {
                     fallback={<SKPostHeader />}
                     children={<PostHeader postId={postId} />}
                 />
-                <Suspense
-                    fallback={<SKPostBody />}
-                    children={<PostBody postId={postId} />}
-                />
+
+                <PostBody postId={postId} />
 
                 <Giscus />
 
