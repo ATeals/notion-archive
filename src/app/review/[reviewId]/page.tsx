@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import ReviewHeader, { Skeleton as SkReviewHeader } from "./_components/ReviewHeader";
 import PortalReviewList from "../_components/PortalReviewList";
 import ReviewToc from "./_components/ReviewToc";
+import { RevaildatePost } from "@/components/RevalidateBtn";
 
 export { generateMetadata } from "./metadata";
 
@@ -25,6 +26,11 @@ export default ({ params: { reviewId } }: { params: { reviewId: string } }) => {
                 <Portal
                     component={<ReviewToc reviewId={reviewId} />}
                     elementId="Toc"
+                />
+
+                <Portal
+                    component={<RevaildatePost id={reviewId} />}
+                    elementId="Revaildate"
                 />
 
                 <PortalReviewList />
