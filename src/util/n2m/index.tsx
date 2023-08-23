@@ -20,7 +20,7 @@ n2m.setCustomTransformer("image", async (block) => {
             await fetch(`https://api.notion.com/v1/blocks/${block.id}`, {
                 method: "GET",
                 headers: { accept: "application/json", "Notion-Version": "2022-06-28", Authorization: `Bearer ${process.env.NOTION_KEY}` },
-                next: { revalidate: 1800 },
+                next: { revalidate: 0 },
             })
         ).json();
 
@@ -28,7 +28,7 @@ n2m.setCustomTransformer("image", async (block) => {
     }
 
     return `<div className="flex flex-col items-center my-10">
-    <img loading="lazy" className="m-0" src="${image?.file?.url || image?.external?.url || ""}" alt="image" />
+    <img loading="lazy" className="m-0" src="${image?.file?.url || image?.external?.url || ""}" alt="${image?.file?.expiry_time ? image?.file?.expiry_time : "newImage"}" />
     <span className="text-[gray] italic">${image?.caption[0]?.text?.content === undefined ? "" : image?.caption[0]?.text?.content}</span>
     </div>`;
 });
