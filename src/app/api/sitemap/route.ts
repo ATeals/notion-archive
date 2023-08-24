@@ -1,4 +1,4 @@
-import { notionPostList } from "@/util/notion";
+import { notionPostList, notionReviews } from "@/util/notion";
 import { NextRequest, NextResponse } from "next/server";
 
 export const revalidate = 0;
@@ -6,14 +6,17 @@ export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest, response: NextResponse) {
-    const siteUrl = "https://tealsblog.vercel.app/posts/";
+    const siteUrl = "https://tealsblog.vercel.app/";
 
     const posts = await notionPostList();
+    const reviews = await notionReviews();
+    console.log(reviews);
 
     const xmlData = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url><loc>${siteUrl}</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-    ${posts.map((post) => `<url><loc>${siteUrl}${post.id}</loc><changefreq>daily</changefreq><priority>0.7</priority></url>`).join("\n")}
+    ${posts.map((post) => `<url><loc>${siteUrl}series/${post.id}</loc><changefreq>daily</changefreq><priority>0.7</priority></url>`).join("\n")}
+    ${reviews.map((post) => `<url><loc>${siteUrl}review/${post.id}</loc><changefreq>daily</changefreq><priority>0.7</priority></url>`).join("\n")}
     </urlset>`;
 
     return new Response(xmlData, {
