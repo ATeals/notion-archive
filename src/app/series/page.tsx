@@ -2,8 +2,6 @@ import { Suspense } from "react";
 import PostList, { Skeleton } from "./_components/PostList";
 import PortalSeriesList from "./_components/PortalSeriesList";
 
-export const revalidate = 0;
-
 export default () => {
     return (
         <section className="w-full">
