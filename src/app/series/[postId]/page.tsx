@@ -38,8 +38,6 @@ export default ({ params: { postId } }: { params: { postId: string } }) => {
                     component={<Suspense children={<SeriesToc seriesId={postId} />} />}
                     elementId="Toc"
                 />
-
-                <PortalSeriesList />
             </section>
         </>
     );

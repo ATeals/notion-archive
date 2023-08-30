@@ -9,8 +9,6 @@ export default () => {
                 fallback={<Skeleton />}
                 children={<ReviewList />}
             />
-
-            <PortalReviewList />
         </section>
     );
 };

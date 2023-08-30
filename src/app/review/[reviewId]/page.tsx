@@ -32,8 +32,6 @@ export default ({ params: { reviewId } }: { params: { reviewId: string } }) => {
                     component={<RevaildatePost id={reviewId} />}
                     elementId="Revaildate"
                 />
-
-                <PortalReviewList />
             </section>
         </>
     );

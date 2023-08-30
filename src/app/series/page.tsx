@@ -10,7 +10,6 @@ export default () => {
                 fallback={<Skeleton />}
                 children={<PostList />}
             />
-            <PortalSeriesList />
         </section>
     );
 };
