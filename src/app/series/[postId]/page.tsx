@@ -4,7 +4,6 @@ import PostHeader, { Skeleton as SKPostHeader } from "./_components/PostHeader";
 import Giscus from "../../../components/Posts/Comments";
 import Portal from "@/components/Portal";
 import { RevaildatePost } from "@/components/RevalidateBtn";
-import PortalSeriesList from "../_components/PortalSeriesList";
 import SeriesToc from "./_components/SeriesToc";
 
 export { generateMetadata } from "./metadata";
@@ -17,28 +16,22 @@ export { generateMetadata } from "./metadata";
 // }
 
 export default ({ params: { postId } }: { params: { postId: string } }) => {
-    return (
-        <>
-            <section className="flex flex-col w-full">
-                <Suspense
-                    fallback={<SKPostHeader />}
-                    children={<PostHeader postId={postId} />}
-                />
+  return (
+    <>
+      <section className="flex flex-col w-full">
+        <Suspense fallback={<SKPostHeader />} children={<PostHeader postId={postId} />} />
 
-                <PostBody postId={postId} />
+        <PostBody postId={postId} />
 
-                <Giscus />
+        <Giscus />
 
-                <Portal
-                    component={<RevaildatePost id={postId} />}
-                    elementId="Revaildate"
-                />
+        <Portal component={<RevaildatePost id={postId} />} elementId="Revaildate" />
 
-                <Portal
-                    component={<Suspense children={<SeriesToc seriesId={postId} />} />}
-                    elementId="Toc"
-                />
-            </section>
-        </>
-    );
+        <Portal
+          component={<Suspense children={<SeriesToc seriesId={postId} />} />}
+          elementId="Toc"
+        />
+      </section>
+    </>
+  );
 };
